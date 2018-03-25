@@ -82,16 +82,16 @@ loadFromLS(){
 
 
   console.log('counter:'+ counter);
-  while(count<=counter){
-  var currentFriend=localStorage.getItem(JSON.stringify(count));
-  console.log('count:'+count);
-  console.log('counter:'+counter);
-  console.log('currentFriend:'+currentFriend);
-    new Promise((resolve, reject) => {
-    return this.makeRequest1(currentFriend);
-  });
+  while(count <= counter){
+    var currentFriend=localStorage.getItem(JSON.stringify(count));
+    console.log('count:'+count);
+    console.log('counter:'+counter);
+    console.log('currentFriend:'+currentFriend);
+      new Promise((resolve, reject) => {
+      return this.makeRequest1(currentFriend);
+    });
 
-    count++;
+      count++;
   }
 }
 
