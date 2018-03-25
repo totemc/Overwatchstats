@@ -50,8 +50,8 @@ console.log('componentDidUpdateCalled');
 
 componentDidMount(){
 
-  this.loadFromLS();
-  console.log('loadFromLS called');
+  this.loadFromLSChain();
+  //console.log('loadFromLS called');
 }
 
   render() {
@@ -70,6 +70,28 @@ componentDidMount(){
   }
 
 
+loadFromLSChain(){
+  //localStorage.clear();
+  if (localStorage.getItem("counter") === null) {
+  localStorage.setItem("counter","0");
+  }
+  let counter = parseInt(localStorage.getItem("counter"));
+
+  let friendArray = []
+
+
+  let chain = Promise.resolve(friendArray);
+
+  for (let i = 1; i <= counter; i++){
+    let currentFriend = localStorage.getItem(JSON.stringify(i));
+    friendArray.push(currentFriend);
+  }
+
+  chain.then(friendArray.map(friend => this.makeRequest1(friend)));
+
+}
+
+
 loadFromLS(){
   console.log('inside load from LS');
   var count=1;
@@ -77,21 +99,21 @@ loadFromLS(){
 //localStorage.clear();
   if (localStorage.getItem("counter") === null) {
   localStorage.setItem("counter","0");
-}
+  }
   var counter = parseInt(localStorage.getItem("counter"));
 
 
   console.log('counter:'+ counter);
-  while(count<=counter){
-  var currentFriend=localStorage.getItem(JSON.stringify(count));
-  console.log('count:'+count);
-  console.log('counter:'+counter);
-  console.log('currentFriend:'+currentFriend);
-    new Promise((resolve, reject) => {
-    return this.makeRequest1(currentFriend);
-  });
+  while(count <= counter){
+    var currentFriend=localStorage.getItem(JSON.stringify(count));
+    console.log('count:'+count);
+    console.log('counter:'+counter);
+    console.log('currentFriend:'+currentFriend);
+      new Promise((resolve, reject) => {
+      return this.makeRequest1(currentFriend);
+    });
 
-    count++;
+      count++;
   }
 }
 
@@ -206,8 +228,6 @@ class Error extends React.Component{
 class Cards extends React.Component{
 
   render(){
-
-
    const cards = this.props.friends.map((step, move) => {
 
   if (step.battleTag!==''){
@@ -219,14 +239,13 @@ class Cards extends React.Component{
         <p>SR: {step.comprank}</p>
          <p>Win Percent: {step.winrate}</p>
         </div>
-
       );
     }
 
   });
 
-return <div>{cards}</div>
-}
+  return <div>{cards}</div>
+  }
 }
 */
 

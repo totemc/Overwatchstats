@@ -59,8 +59,8 @@ class OWStats {
         .get(url)
         .set('Accept', 'application/json')
         .timeout({
-    response: 10000,  // Wait 5 seconds for the server to start sending,
-    deadline: 60000, // but allow 1 minute for the file to finish loading.
+    response: 60000,  // Wait 5 seconds for the server to start sending,
+    deadline: 120000, // but allow 1 minute for the file to finish loading.
   })
         .end((err, res) => {
           if (err) { reject(err) } else {
