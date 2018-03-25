@@ -50,8 +50,8 @@ console.log('componentDidUpdateCalled');
 
 componentDidMount(){
 
-  this.loadFromLS();
-  console.log('loadFromLS called');
+  this.loadFromLSChain();
+  //console.log('loadFromLS called');
 }
 
   render() {
@@ -70,6 +70,28 @@ componentDidMount(){
   }
 
 
+loadFromLSChain(){
+  //localStorage.clear();
+  if (localStorage.getItem("counter") === null) {
+  localStorage.setItem("counter","0");
+  }
+  let counter = parseInt(localStorage.getItem("counter"));
+
+  let friendArray = []
+
+
+  let chain = Promise.resolve(friendArray);
+
+  for (let i = 1; i <= counter; i++){
+    let currentFriend = localStorage.getItem(JSON.stringify(i));
+    friendArray.push(currentFriend);
+  }
+
+  chain.then(friendArray.map(friend => this.makeRequest1(friend)));
+
+}
+
+
 loadFromLS(){
   console.log('inside load from LS');
   var count=1;
@@ -77,7 +99,7 @@ loadFromLS(){
 //localStorage.clear();
   if (localStorage.getItem("counter") === null) {
   localStorage.setItem("counter","0");
-}
+  }
   var counter = parseInt(localStorage.getItem("counter"));
 
 
