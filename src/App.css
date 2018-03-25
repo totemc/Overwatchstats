@@ -12,15 +12,15 @@ max-height:50%;
 }
 
 body {
-  background: #222629;
+  background: #0;
   margin-top: 40px;
   font-family: "Open Sans", sans-serif;
-  color:white;
+  color:black;
   width: 100%
 }
 
 h1 {
-  color: #fff;
+  color: black;
   font-size: 4em;
   text-align: center;
   font-weight: 800;
@@ -40,7 +40,7 @@ p.Error{
 }
 
 .App {
-  text-align: center;
+ text-align: center;
 }
 
 .App-logo {

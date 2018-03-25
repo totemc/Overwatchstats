@@ -2,9 +2,9 @@ import React from 'react';
 
 import '.././App.css';
 import OWStats from '.././overwatch-stats.js';
-import {Card, CardHeader, CardTitle} from 'material-ui/Card';
-
-
+import Cards from './cards.js'
+import Error from './error.js'
+import Input from './input.js'
 
 class Container1 extends React.Component {
   constructor(props) {
@@ -92,32 +92,6 @@ loadFromLSChain(){
 }
 
 
-loadFromLS(){
-  console.log('inside load from LS');
-  var count=1;
-
-//localStorage.clear();
-  if (localStorage.getItem("counter") === null) {
-  localStorage.setItem("counter","0");
-  }
-  var counter = parseInt(localStorage.getItem("counter"));
-
-
-  console.log('counter:'+ counter);
-  while(count <= counter){
-    var currentFriend=localStorage.getItem(JSON.stringify(count));
-    console.log('count:'+count);
-    console.log('counter:'+counter);
-    console.log('currentFriend:'+currentFriend);
-      new Promise((resolve, reject) => {
-      return this.makeRequest1(currentFriend);
-    });
-
-      count++;
-  }
-}
-
-
 saveToLs(string){
   console.log('inside savetoLs');
 
@@ -165,11 +139,7 @@ makeRequest1(currentFriend){
       console.log(error);
       this.setState({hasError: true});
     });
-
-
   }
-
-
 
   makeRequest(){
     console.log(this.state.fieldVal);
@@ -205,121 +175,5 @@ makeRequest1(currentFriend){
     }
   }
 }
-
-class Error extends React.Component{
-
-  render (){
-
-  if(this.props.hasError){
-    return(
-      <p className="Error">There was a problem with that BattleTag</p>
-    );
-  }
-  else {
-    return (
-      <p className="Error"></p>
-    )
-  }
-
-}
-}
-
-/*
-class Cards extends React.Component{
-
-  render(){
-   const cards = this.props.friends.map((step, move) => {
-
-  if (step.battleTag!==''){
-    return (
-
-        <div className="card card-1" key={move}>
-        <p>{step.battleTag} </p>
-        <img src={step.tier} alt='' className='Tier'/>
-        <p>SR: {step.comprank}</p>
-         <p>Win Percent: {step.winrate}</p>
-        </div>
-      );
-    }
-
-  });
-
-  return <div>{cards}</div>
-  }
-}
-*/
-
-const style = {
-  height: 200,
-  width: 200,
-  margin: 20,
-  textAlign: 'center',
-  display: 'inline-block',
-};
-
-class Cards extends React.Component {
-
-  render(){
-
-    const cards = this.props.friends.map((step, move) => {
-
-   if (step.battleTag!==''){
-     return (
-
-
-         <Card style={style} zDepth={3} key={move}>
-            <CardHeader
-              title={step.battleTag}
-              subtitle="Subtitle"
-              avatar={step.tier}
-            />
-
-            <CardTitle title={step.comprank} subtitle={step.winrate} />
-          </Card>
-       );
-     }
-
-   });
-
- return <div>{cards}</div>
- }
- }
-
-class Input extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      fieldVal: ""
-    }
-  }
-
-  _handleKeyPress = (e) => {
-      if (e.key === 'Enter') {
-      //  console.log("enter was pressed");
-        this.props.enterPressed();
-      }
-    }
-  update = (e) => {
-  //  console.log(e.target.value);
-    this.props.onUpdate(e.target.value);
-    this.setState({fieldVal: e.target.value});
-  };
-
-  render() {
-    return (
-      <div>
-        <input
-          type="text"
-          placeholder="BattleTag + Enter"
-          onChange={this.update}
-          value={this.state.fieldVal}
-          onKeyPress={this._handleKeyPress}
-        />
-      </div>
-    )
-  }
-}
-
 
 export default Container1;
