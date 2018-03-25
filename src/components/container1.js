@@ -206,8 +206,6 @@ class Error extends React.Component{
 class Cards extends React.Component{
 
   render(){
-
-
    const cards = this.props.friends.map((step, move) => {
 
   if (step.battleTag!==''){
@@ -219,14 +217,13 @@ class Cards extends React.Component{
         <p>SR: {step.comprank}</p>
          <p>Win Percent: {step.winrate}</p>
         </div>
-
       );
     }
 
   });
 
-return <div>{cards}</div>
-}
+  return <div>{cards}</div>
+  }
 }
 */
 
