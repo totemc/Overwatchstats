@@ -44,7 +44,7 @@ p.Error{
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  /*animation: App-logo-spin infinite 20s linear; */
   height: 80px;
 }
 
@@ -78,13 +78,5 @@ p.Error{
   to { transform: rotate(360deg); }
 }
 
-@media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    h1 {
-      color: #fff;
-      font-size: 4em;
-      text-align: center;
-      font-weight: 400;
-      margin-bottom: 0;
-    }
-  }
+    

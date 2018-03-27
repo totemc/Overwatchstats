@@ -6,6 +6,8 @@ import Cards from './cards.js'
 import Error from './error.js'
 import Input from './input.js'
 
+import Drawer from './drawer1.js'
+
 class Container1 extends React.Component {
   constructor(props) {
     super(props);
@@ -19,6 +21,8 @@ friends: [{
   winrate: '',
   avatar: '',
   tier: '',
+  wins: '',
+  losses: '',
 }],
     }
   }
@@ -65,6 +69,7 @@ componentDidMount(){
 
         <Cards {...this.state}/>
 
+        <Drawer/>
       </div>
     )
   }
@@ -121,6 +126,7 @@ makeRequest1(currentFriend){
   })
       .then(data => {
         let stats = new OWStats(data)
+        console.log(stats);
         // Stats Object available for use
 
       //  console.log(stats);
@@ -131,6 +137,8 @@ makeRequest1(currentFriend){
           winrate: stats._raw.body.us.stats.competitive.overall_stats.win_rate,
           avatar: stats._raw.body.us.stats.competitive.overall_stats.avatar,
           tier: stats._raw.body.us.stats.competitive.overall_stats.tier_image,
+          wins: stats._raw.body.us.stats.competitive.overall_stats.wins,
+          losses: stats._raw.body.us.stats.competitive.overall_stats.losses,
         }]),
       });
 
@@ -162,6 +170,9 @@ makeRequest1(currentFriend){
             winrate: stats._raw.body.us.stats.competitive.overall_stats.win_rate,
             avatar: stats._raw.body.us.stats.competitive.overall_stats.avatar,
             tier: stats._raw.body.us.stats.competitive.overall_stats.tier_image,
+            wins: stats._raw.body.us.stats.competitive.overall_stats.wins,
+            losses: stats._raw.body.us.stats.competitive.overall_stats.losses,
+
           }]),
         });
 
