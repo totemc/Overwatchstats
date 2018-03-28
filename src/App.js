@@ -17,8 +17,7 @@ class App extends Component {
         <h2>
           To get started, type in a valid Overwatch BattleTag
         </h2>
-        <Container1 />
-
+        <Container1 />        
       </div>
       </MuiThemeProvider>
     );

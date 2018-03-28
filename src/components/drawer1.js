@@ -34,6 +34,7 @@ export default class DrawerUndockedExample extends React.Component {
         <Drawer
           docked={false}
           width={200}
+          disableSwipeToOpen={true}
           open={this.state.open}
           onRequestChange={(open) => this.setState({open})}
         >

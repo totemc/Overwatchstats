@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 import Divider from 'material-ui/Divider';
-
+const photo = require('./../overwatch.jpg');
 
 const style = {
   height: 250,
@@ -11,12 +11,29 @@ const style = {
   display: 'inline-block',
 };
 
-const divStyle = {
+const out= {
+overflow: "scroll",
+  width: "auto",
+  whiteSpace: 'nowrap',
+  marginLeft:20,
+  marginRight:20,
+
+};
+var divStyle = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
 
 };
+
+if(/Mobi/.test(navigator.userAgent)){
+  divStyle = {
+    display: 'flex',
+    justifyContent: 'left',
+    alignItems: 'center',
+
+  };
+}
 
 const imgStyle = {
   height:75,
@@ -28,8 +45,6 @@ const imgStyle = {
   alignItems: 'center',
 };
 
-
-const  ologo ='/static/media/Overwatch_circle_logo.1a528d9e.svg';
 
 
 class Cards extends React.Component {
@@ -49,7 +64,7 @@ class Cards extends React.Component {
      let imgsrc=step.tier;
 
      if(imgsrc===undefined){
-       imgsrc=ologo;
+       imgsrc=photo;
      }
 
      if (step.comprank===null)
@@ -80,7 +95,7 @@ class Cards extends React.Component {
 
    });
 
- return <div style={divStyle}>{cards}</div>
+ return <div style={out}> <div style={divStyle}>{cards}</div> </div>
  }
  }
 

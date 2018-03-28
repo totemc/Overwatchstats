@@ -66,7 +66,6 @@ componentDidMount(){
       <div>
         <Input enterPressed={this.handleEnterPressed} onUpdate={this.onUpdate} />
         <Error {...this.state}/>
-
         <Cards {...this.state}/>
 
         <Drawer/>
