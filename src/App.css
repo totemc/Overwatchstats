@@ -16,14 +16,14 @@ body {
   margin-top: 40px;
   font-family: "Open Sans", sans-serif;
   color:black;
-  width: 100%
+  width: 100%;
 }
 
 h1 {
   color: black;
   font-size: 4em;
   text-align: center;
-  font-weight: 800;
+
   margin-bottom: 0;
 }
 
@@ -44,7 +44,7 @@ p.Error{
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  /*animation: App-logo-spin infinite 20s linear; */
   height: 80px;
 }
 
@@ -78,13 +78,10 @@ p.Error{
   to { transform: rotate(360deg); }
 }
 
-@media only screen and (max-width: 768px) {
     /* For mobile phones: */
-    h1 {
-      color: #fff;
-      font-size: 4em;
-      text-align: center;
-      font-weight: 400;
-      margin-bottom: 0;
-    }
+  @media only screen
+  and (min-device-width : 375px)
+  and (max-device-width : 667px)
+  and (orientation : portrait) {
+    h1{ font-size: 2em;}
   }
