@@ -12,7 +12,7 @@ const style = {
 };
 
 const out= {
-overflow: "scroll",
+overflow: "hidden",
   width: "auto",
   whiteSpace: 'nowrap',
   marginLeft:20,
@@ -23,6 +23,7 @@ var divStyle = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  overflow:'scroll',
 
 };
 
