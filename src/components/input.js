@@ -13,6 +13,8 @@ class Input extends React.Component {
       if (e.key === 'Enter') {
       //  console.log("enter was pressed");
         this.props.enterPressed();
+        // Empty the field for ux
+        this.setState({fieldVal:''});
       }
     }
   update = (e) => {
